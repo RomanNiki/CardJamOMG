@@ -1,0 +1,28 @@
+/.idea/*
+#ignore for gameactivity Build
+/.utmp/*
+#
+/[Ll]ibrary/*
+/[Ll]ogs/*
+/[Oo]bj/*
+/[Tt]emp/*
+/[Bb]ins
+/[Ss]creenshots
+*.csproj
+*.sln
+*.sln.DotSettings.user
+*.apk
+*.zip
+*.keystore
+/UserSettings/*
+
+# Firebase remote confis cache
+remote_config_data
+crashlytics_build_id.xml
+/Assets/GeneratedLocalRepo
+
+/cache/*
+.DS_Store
+*/.DS_Store
+/cache/
+/additional_info_packages.json
