@@ -1,0 +1,8 @@
+{
+  "name": "Infrastructure",
+  "references": [
+    "Scellecs.Morpeh",
+    "UniTask",
+    "VContainer"
+  ]
+}
