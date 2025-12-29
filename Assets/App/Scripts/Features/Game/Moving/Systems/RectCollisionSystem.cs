@@ -37,15 +37,24 @@ namespace App.Scripts.Features.Game.Moving.Systems
                     Rect rectA = new Rect(aspectAPosition.x, aspectAPosition.y, colliderSize.x, colliderSize.y);
                     Vector2 aspectBPosition = aspectB.Position.Value;
                     Vector2 colliderSizeB = aspectB.Collider.Size;
-                    Rect rectB = new Rect(aspectBPosition.x, aspectBPosition.y,  colliderSizeB.x, colliderSizeB.y);
+                    Rect rectB = new Rect(aspectBPosition.x, aspectBPosition.y, colliderSizeB.x, colliderSizeB.y);
 
-                    if (rectA.Overlaps(rectB, true))
+                    if (Intersects(rectA, rectB) || rectA.Overlaps(rectB, true))
                     {
                         ResolveCollision(ref aspectA, ref aspectB);
                     }
                 }
             }
         }
+
+        bool Intersects(Rect a, Rect b)
+        {
+            return !(a.xMax <= b.xMin ||
+                     a.xMin >= b.xMax ||
+                     a.yMax <= b.yMin ||
+                     a.yMin >= b.yMax);
+        }
+
 
         private void ResolveCollision(ref CollisionAspect a, ref CollisionAspect b)
         {

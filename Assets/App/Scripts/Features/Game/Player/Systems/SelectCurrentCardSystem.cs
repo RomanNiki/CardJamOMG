@@ -77,7 +77,6 @@ namespace App.Scripts.Features.Game.Player.Systems
                 card = cardData,
                 position = center,
                 velocity = Vector2.zero,
-                size = new Vector2(100, 150),
                 isCurrentCard = true
             });
         }

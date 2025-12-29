@@ -28,16 +28,15 @@ namespace App.Scripts.Features.Game.Level.Systems
                 cardEntity.SetVelocityComponents(request.velocity);
                 cardEntity.SetInertiaComponent(0.4f);
                 cardEntity.SetComponent(request.card);
+                cardEntity.SetComponent(new TagIgnoreGravity());
 
                 if (request.isCurrentCard)
                 {
                     cardEntity.SetComponent(new TagCurrentCard());
-                    cardEntity.SetComponent(new TagIgnoreGravity());
                 }
                 else
                 {
                     cardEntity.SetComponent(new OnField());
-                    cardEntity.SetComponent(new TagIgnoreGravity());
                 }
 
                 World.RemoveEntity(entity);

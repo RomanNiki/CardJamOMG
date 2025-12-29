@@ -43,7 +43,6 @@ namespace App.Scripts.Features.Game.Level.Systems
                 },
                 position = rect.center,
                 velocity = cardData.moveDir,
-                size = rect.size,
                 isCurrentCard = false
             });
         }
