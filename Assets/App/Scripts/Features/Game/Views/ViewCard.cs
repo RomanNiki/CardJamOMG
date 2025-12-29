@@ -9,6 +9,7 @@ namespace App.Scripts.Features.Game.Views
     {
         public Image[] cardBackgrounds;
         public TMP_Text[] texts;
+        public Graphic[] Graphic;
 
         public void SetNumber(int number)
         {
@@ -18,9 +19,17 @@ namespace App.Scripts.Features.Game.Views
             }
         }
 
-        public void SetColor(Color color)
+        public void SetSprite(Sprite sprite)
         {
             foreach (var cardBackground in cardBackgrounds)
+            {
+                cardBackground.sprite = sprite;
+            }
+        }
+        
+        public void SetColor(Color color)
+        {
+            foreach (var cardBackground in Graphic)
             {
                 cardBackground.color = color;
             }

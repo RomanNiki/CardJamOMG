@@ -11,9 +11,14 @@ namespace App.Scripts.Features.Game.Configs
         public ViewCard prefab;
         public List<CardSpriteData> sprites;
 
-        public Color GetColor(string cardType)
+        public Sprite GetSprite(string cardType)
         {
             return sprites.Find(s => s.type == cardType).sprite;
+        }
+
+        public Color GetColor(string cardType)
+        {
+            return sprites.Find(s => s.type == cardType).color;
         }
     }
 
@@ -21,6 +26,7 @@ namespace App.Scripts.Features.Game.Configs
     public struct CardSpriteData
     {
         public string type;
-        public Color sprite;
+        public Sprite sprite;
+        public Color color;
     }
 }

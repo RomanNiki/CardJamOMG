@@ -51,6 +51,7 @@ namespace App.Scripts.Features.Game.Level.Systems
                 var view = _factory.Create();
                 view.Move(position);
                 view.SetNumber(card.number);
+                view.SetSprite(_cardConfig.GetSprite(card.type));
                 view.SetColor(_cardConfig.GetColor(card.type));
 
                 entity.SetComponent(new TransformableView { Value = view });
