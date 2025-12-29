@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class GravitySystem : FixedSystemBase
+    public class GravitySystem : SystemBase
     {
         private Filter _velocityFilter;
-        private const float Gravity = 9.81f;
+        private const float Gravity = -9.8f;
 
         public override void OnAwake()
         {

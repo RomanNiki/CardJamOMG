@@ -1,22 +1,29 @@
+using App.Scripts.Infrastructure.BaseView;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace App.Scripts.Features.Game.Views
 {
-    public class ViewCard : MonoBehaviour
+    public class ViewCard : MonoView
     {
-        public Image image;
-        public TMP_Text text;
+        public Image[] cardBackgrounds;
+        public TMP_Text[] texts;
 
         public void SetNumber(int number)
         {
-            text.SetText(number.ToString());
+            foreach (TMP_Text tmpText in texts)
+            {
+                tmpText.SetText(number.ToString());
+            }
         }
 
-        public void SetImage(Sprite sprite)
+        public void SetColor(Color color)
         {
-            image.sprite = sprite;
+            foreach (var cardBackground in cardBackgrounds)
+            {
+                cardBackground.color = color;
+            }
         }
     }
 }

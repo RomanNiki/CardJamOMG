@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace App.Scripts.Features.Game.Input.Systems
 {
-    public class InertiaSystem : FixedSystemBase
+    public class InertiaSystem : SystemBase
     {
         private Filter _filter;
         private Stash<Velocity> _velocityStash;

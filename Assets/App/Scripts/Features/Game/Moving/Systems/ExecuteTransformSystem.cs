@@ -5,7 +5,7 @@ using Scellecs.Morpeh;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class ExecuteTransformSystem : FixedSystemBase
+    public class ExecuteTransformSystem : SystemBase
     {
         private Filter _moveableFilter;
         private AspectFactory<TransformAspect> _transformAspect;

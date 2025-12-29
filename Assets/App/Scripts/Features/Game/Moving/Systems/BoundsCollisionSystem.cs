@@ -4,7 +4,7 @@ using Scellecs.Morpeh;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class BoundsCollisionSystem : FixedSystemBase
+    public class BoundsCollisionSystem : SystemBase
     {
         private Filter _filter;
         private Stash<Position> _positionStash;

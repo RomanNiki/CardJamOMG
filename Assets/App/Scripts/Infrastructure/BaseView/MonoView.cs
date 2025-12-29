@@ -52,6 +52,10 @@ namespace App.Scripts.Infrastructure.BaseView
         
         public void Rotate(float rotation)
         {
+            if (Mathf.Approximately(Transform.rotation.eulerAngles.z, rotation))
+            {
+                return;
+            }
             Transform.rotation = Quaternion.Euler(0f, 0f, rotation);
         }
         

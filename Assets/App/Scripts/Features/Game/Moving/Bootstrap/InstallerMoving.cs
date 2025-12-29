@@ -12,15 +12,17 @@ namespace App.Scripts.Features.Game.Moving.Bootstrap
     {
         public override void Install(IContainerBuilder builder)
         {
-            builder.RegisterInitializer<InitializerDisposableStashes>();
+            builder.RegisterInitializer<InitializerMovingDisposableStashes>();
             builder.RegisterSystem<OneShotSystem<EventCollided>>();
             builder.RegisterSystem<RectCollisionSystem>();
             builder.RegisterSystem<BoundsCollisionSystem>();
             builder.RegisterSystem<GravitySystem>();
             builder.RegisterSystem<ForceSystem>();
+            builder.RegisterSystem<AngularForceSystem>();
             builder.RegisterSystem<VelocitySystem>();
             builder.RegisterSystem<ExecuteTransformSystem>();
             builder.RegisterSystem<OneShotSystem<ForceRequest>>();
+            builder.RegisterSystem<OneShotSystem<AngularForceRequest>>();
         }
     }
 }

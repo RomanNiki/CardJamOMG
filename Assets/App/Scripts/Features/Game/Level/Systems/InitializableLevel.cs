@@ -1,8 +1,7 @@
 using App.Scripts.Features.Game.Constants;
 using App.Scripts.Features.Game.Level.Components;
+using App.Scripts.Features.Game.Level.Events;
 using App.Scripts.Features.Game.Level.Models;
-using App.Scripts.Features.Game.Moving.Aspects.Initializers;
-using App.Scripts.Features.Game.Moving.Components;
 using App.Scripts.Features.Game.Views;
 using App.Scripts.Infrastructure.WorldExtesions.Systems;
 using Scellecs.Morpeh;
@@ -22,6 +21,9 @@ namespace App.Scripts.Features.Game.Level.Systems
 
             var model = modelLevelEntity.GetComponent<ModelLevel>();
 
+            Entity entity = World.CreateEntity();
+            entity.SetComponent(new Field(_viewGrid));
+
             foreach (var cardData in model.listCardsPos)
             {
                 CreateCard(cardData);
@@ -30,20 +32,20 @@ namespace App.Scripts.Features.Game.Level.Systems
 
         private void CreateCard(ModelCard cardData)
         {
-            var entity = World.CreateEntity();
-            
+            var requestEntity = World.CreateEntity();
             var rect = _viewGrid.GetCellRect(cardData.position);
             
-            entity.SetTransformComponents(rect.center);
-            entity.SetVelocityComponents(cardData.moveDir);
-            entity.SetCollisionComponents(rect.size);
-            entity.SetComponent(new TagIgnoreGravity());
-            entity.SetComponent(new OnField());
-            
-            entity.SetComponent(new Card
+            requestEntity.SetComponent(new RequestSpawnCard
             {
-                type = CardType.GetRandom(),
-                number = GameConstants.GetRandomValue()
+                card = new Card
+                {
+                    type = CardType.GetRandom(),
+                    number = GameConstants.GetRandomValue()
+                },
+                position = rect.center,
+                velocity = cardData.moveDir,
+                size = rect.size,
+                isCurrentCard = false
             });
         }
     }

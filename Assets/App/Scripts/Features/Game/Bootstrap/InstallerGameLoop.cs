@@ -1,3 +1,4 @@
+using App.Scripts.Features.Game.Cards.Systems;
 using App.Scripts.Features.Game.Input.Bootstrap;
 using App.Scripts.Features.Game.Level.Systems;
 using App.Scripts.Features.Game.Moving.Bootstrap;
@@ -14,7 +15,10 @@ namespace App.Scripts.Features.Game.Bootstrap
         {
             builder.RegisterInitializer<InitializableLevel>();
             builder.RegisterInitializer<InitializerPlayerInventory>();
+            builder.RegisterSystem<SpawnCardSystem>();
+            builder.RegisterSystem<SpawnViewCardSystem>();
             builder.RegisterSystem<SelectCurrentCardSystem>();
+            builder.RegisterSystem<MatchSystem>();
             InstallerInput.Configure(builder);
             InstallerMoving.Configure(builder);
         }

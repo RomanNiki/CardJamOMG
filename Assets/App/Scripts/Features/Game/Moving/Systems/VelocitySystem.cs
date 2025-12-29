@@ -5,7 +5,7 @@ using Scellecs.Morpeh;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class VelocitySystem : FixedSystemBase
+    public class VelocitySystem : SystemBase
     {
         private Filter _velocityFilter;
         private AspectFactory<TransformAspect> _transformAspect;

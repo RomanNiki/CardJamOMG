@@ -1,19 +1,23 @@
+using App.Scripts.Features.Game.Level.Components;
 using App.Scripts.Features.Game.Moving.Aspects;
 using App.Scripts.Features.Game.Moving.Events;
+using App.Scripts.Features.Game.Player.Components;
 using App.Scripts.Infrastructure.WorldExtesions.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class RectCollisionSystem : FixedSystemBase
+    public class RectCollisionSystem : SystemBase
     {
         private Filter _filter;
         private AspectFactory<CollisionAspect> _aspectFactory;
+        private Filter _filterFieldCard;
 
         public override void OnAwake()
         {
-            _filter = World.Filter.Extend<CollisionAspect>().Build();
+            _filter = World.Filter.Extend<CollisionAspect>().With<TagThrownCard>().Build();
+            _filterFieldCard = World.Filter.Extend<CollisionAspect>().With<OnField>().Build();
             _aspectFactory = World.GetAspectFactory<CollisionAspect>();
         }
 
@@ -21,7 +25,7 @@ namespace App.Scripts.Features.Game.Moving.Systems
         {
             foreach (var entityA in _filter)
             {
-                foreach (var entityB in _filter)
+                foreach (var entityB in _filterFieldCard)
                 {
                     if (entityA == entityB) continue;
                     

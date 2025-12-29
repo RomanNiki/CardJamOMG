@@ -4,7 +4,7 @@ using Scellecs.Morpeh;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class InitializerDisposableStashes : InitializerBase
+    public class InitializerMovingDisposableStashes : InitializerBase
     {
         public override void OnAwake()
         {

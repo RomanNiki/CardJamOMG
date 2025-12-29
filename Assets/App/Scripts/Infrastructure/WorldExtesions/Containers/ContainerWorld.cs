@@ -17,10 +17,10 @@ namespace App.Scripts.Infrastructure.WorldExtesions.Containers
         }
 
         public Scellecs.Morpeh.World World => _world;
-
-        public void Initialize()
+        
+        public void Initialize(World world = null)
         {
-            CreateWorldWithSystems(_systems, _initializers);
+            CreateWorldWithSystems(world, _systems, _initializers);
         }
 
         public void Update()
@@ -40,12 +40,21 @@ namespace App.Scripts.Infrastructure.WorldExtesions.Containers
             _world = null;
         }
 
-        private void CreateWorldWithSystems(IEnumerable<ISystem> systems, IEnumerable<IInitializer> initializers)
+        private void CreateWorldWithSystems(World world, IEnumerable<ISystem> systems,
+            IEnumerable<IInitializer> initializers)
         {
             if (_world != null)
                 return;
+
+            if (world == null)
+            {
+                _world = Scellecs.Morpeh.World.Create();
+            }
+            else
+            {
+                _world = world;
+            }
             
-            _world = Scellecs.Morpeh.World.Create();
             var systemsGroup = _world.CreateSystemsGroup();
 
             foreach (var initializer in initializers)

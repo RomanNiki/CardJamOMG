@@ -4,7 +4,7 @@ using Scellecs.Morpeh;
 
 namespace App.Scripts.Features.Game.Moving.Systems
 {
-    public class ForceSystem : FixedSystemBase
+    public class ForceSystem : SystemBase
     {
         private Filter _filter;
         private Stash<ForceRequest> _forceStash;
@@ -22,18 +22,19 @@ namespace App.Scripts.Features.Game.Moving.Systems
             foreach (var entity in _filter)
             {
                 ref var forceRequest = ref _forceStash.Get(entity);
-                ref var forceEntity = ref forceRequest.Entity;
+                var forceEntity = forceRequest.Entity;
                 
                 if (forceEntity.IsNullOrDisposed())
                 {
                     continue;
                 }
 
-                ref var velocity = ref _velocityStash.Get(forceEntity);
-                velocity.Value += forceRequest.Value * deltaTime;
+                if (_velocityStash.Has(forceEntity))
+                {
+                    ref var velocity = ref _velocityStash.Get(forceEntity);
+                    velocity.Value += forceRequest.Value;
+                }
             }
-
-            _forceStash.RemoveAll();
         }
     }
 }
