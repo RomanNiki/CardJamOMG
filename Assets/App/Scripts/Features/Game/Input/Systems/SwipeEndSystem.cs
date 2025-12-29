@@ -34,7 +34,7 @@ namespace App.Scripts.Features.Game.Input.Systems
                     Vector2 direction = currentPosition - swipeData.StartPosition;
 
                     // Если свайп слишком короткий по времени, фиксируем его как 0.1с для избежания деления на 0
-                    float velocityFactor = duration > 0.01f ? 1f / duration : 100f;
+                    float velocityFactor = duration > 0.01f ? 1f / duration : 0.1f;
                     Vector2 swipeVelocity =
                         direction * (velocityFactor); // Коэффициент 0.01 для нормализации экранных координат
                     
