@@ -42,8 +42,8 @@ namespace App.Scripts.Features.Game.Input.Systems
                     // Torque = r x F, в 2D это r.x * F.y - r.y * F.x
                     float torque = (swipeData.Offset.x * swipeVelocity.y - swipeData.Offset.y * swipeVelocity.x) * 0.01f;
                     
-                    float swipeAngularVelocity =
-                        Mathf.Repeat(Mathf.Abs((swipeData.AccumulatedTwist / duration) + torque), 360f);
+                    float swipeDataAccumulatedTwist = (swipeData.AccumulatedTwist / duration) + torque;
+                    float swipeAngularVelocity = Mathf.Clamp(swipeDataAccumulatedTwist, -720f, 720f);
 
                     Debug.Log($"Swipe velocity: {swipeVelocity}, torque: {torque}, angular velocity: {swipeAngularVelocity}");
                     

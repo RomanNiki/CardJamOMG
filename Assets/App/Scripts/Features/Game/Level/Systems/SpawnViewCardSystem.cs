@@ -1,5 +1,6 @@
 using App.Scripts.Features.Game.Configs;
 using App.Scripts.Features.Game.Level.Components;
+using App.Scripts.Features.Game.Moving.Aspects.Initializers;
 using App.Scripts.Features.Game.Moving.Components;
 using App.Scripts.Features.Game.Views;
 using App.Scripts.Infrastructure.Factory;
@@ -54,10 +55,7 @@ namespace App.Scripts.Features.Game.Level.Systems
                 view.SetSprite(_cardConfig.GetSprite(card.type));
                 view.SetColor(_cardConfig.GetColor(card.type));
                 
-                entity.SetComponent(new RectCollider()
-                {
-                    Size = view.GetRect().size
-                });
+                entity.SetCollisionComponents(view.GetRect().size);
 
                 entity.SetComponent(new TransformableView { Value = view });
             }

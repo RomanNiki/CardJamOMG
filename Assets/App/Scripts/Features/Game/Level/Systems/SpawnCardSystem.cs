@@ -26,7 +26,6 @@ namespace App.Scripts.Features.Game.Level.Systems
                 var cardEntity = World.CreateEntity();
                 cardEntity.SetTransformComponents(request.position);
                 cardEntity.SetVelocityComponents(request.velocity);
-                cardEntity.SetCollisionComponents(request.size);
                 cardEntity.SetInertiaComponent(0.4f);
                 cardEntity.SetComponent(request.card);
 

@@ -34,7 +34,7 @@ namespace App.Scripts.Features.Game.Moving.Systems
                 if (v.sqrMagnitude < 0.001f)
                     continue;
 
-                Vector2 curve = new Vector2(-v.y, v.x) * angular.Value * 0.005f;
+                Vector2 curve = new Vector2(-v.y, v.x) * angular.Value * 0.00005f;
                 velocity.Value += curve * dt;
             }
         }

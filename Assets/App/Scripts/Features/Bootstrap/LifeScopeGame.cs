@@ -28,10 +28,11 @@ namespace App.Scripts.Features.Bootstrap
 
             builder.Register<FactoryView<ViewCard>>(Lifetime.Singleton).AsSelf()
                 .WithParameter(cardConfig.prefab)
-                .WithParameter(viewGrid.root.transform);
+                .WithParameter(viewGrid.rectTransform.transform);
 
-            builder.Register<PoolFactoryView<ViewCard>>(Lifetime.Singleton).As<IFactory<ViewCard>>()
-                .WithParameter(parent.transform);
+            builder.Register<PoolFactoryView<ViewCard>>(Lifetime.Singleton)
+                .As<IFactory<ViewCard>>()
+                .WithParameter(viewGrid.rectTransform.transform);
             
             builder.Register<ContainerWorld>(Lifetime.Singleton).As<IContainerWorld>();
             

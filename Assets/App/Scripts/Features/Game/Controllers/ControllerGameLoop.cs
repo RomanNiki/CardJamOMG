@@ -24,7 +24,9 @@ namespace App.Scripts.Features.Game.Controllers
         public void Initialize()
         {
             World world = World.Create();
+      
             ModelLevel modelLevel = _providerLevels.GetLevels().First(x => x.levelNumber == 7);
+          
             world.CreateEntity().SetComponent(modelLevel);
           
             _container.Initialize(world);
@@ -40,7 +42,7 @@ namespace App.Scripts.Features.Game.Controllers
             _container.Destroy();
         }
 
-        public async UniTask StartAsync(CancellationToken cancellation = new CancellationToken())
+        public async UniTask StartAsync(CancellationToken cancellation = new())
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancellation);
             Initialize();

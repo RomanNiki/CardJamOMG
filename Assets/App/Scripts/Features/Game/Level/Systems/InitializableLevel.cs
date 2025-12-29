@@ -42,7 +42,7 @@ namespace App.Scripts.Features.Game.Level.Systems
                     type = CardType.GetRandom(),
                     number = GameConstants.GetRandomValue()
                 },
-                position = rect.center,
+                position = rect.position,
                 velocity = cardData.moveDir,
                 size = rect.size,
                 isCurrentCard = false
