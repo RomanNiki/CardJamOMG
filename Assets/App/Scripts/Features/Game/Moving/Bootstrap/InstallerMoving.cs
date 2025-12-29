@@ -20,6 +20,7 @@ namespace App.Scripts.Features.Game.Moving.Bootstrap
             builder.RegisterSystem<ForceSystem>();
             builder.RegisterSystem<AngularForceSystem>();
             builder.RegisterSystem<VelocitySystem>();
+            builder.RegisterSystem<MagnusEffectSystem>();
             builder.RegisterSystem<ExecuteTransformSystem>();
             builder.RegisterSystem<OneShotSystem<ForceRequest>>();
             builder.RegisterSystem<OneShotSystem<AngularForceRequest>>();
