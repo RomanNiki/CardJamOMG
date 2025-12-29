@@ -9,5 +9,6 @@ namespace App.Scripts.Features.Game.Input.Components
         public Vector2 LastPosition;
         public float StartTime;
         public float AccumulatedTwist;
+        public Vector2 Offset;
     }
 }

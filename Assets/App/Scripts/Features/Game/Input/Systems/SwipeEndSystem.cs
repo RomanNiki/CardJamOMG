@@ -37,10 +37,15 @@ namespace App.Scripts.Features.Game.Input.Systems
                     float velocityFactor = duration > 0.01f ? 1f / duration : 100f;
                     Vector2 swipeVelocity =
                         direction * (velocityFactor); // Коэффициент 0.01 для нормализации экранных координат
+                    
+                    // Расчет угловой скорости на основе смещения от центра (рычаг)
+                    // Torque = r x F, в 2D это r.x * F.y - r.y * F.x
+                    float torque = (swipeData.Offset.x * swipeVelocity.y - swipeData.Offset.y * swipeVelocity.x) * 0.01f;
+                    
                     float swipeAngularVelocity =
-                        Mathf.Repeat(Mathf.Abs(swipeData.AccumulatedTwist / duration), 360f);
+                        Mathf.Repeat(Mathf.Abs((swipeData.AccumulatedTwist / duration) + torque), 360f);
 
-                    Debug.Log($"Swipe velocity: {swipeVelocity}, angular velocity: {swipeAngularVelocity}");
+                    Debug.Log($"Swipe velocity: {swipeVelocity}, torque: {torque}, angular velocity: {swipeAngularVelocity}");
                     
                     World.SendMassage(new EventSwipe(swipeVelocity, swipeAngularVelocity));
 

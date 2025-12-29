@@ -21,6 +21,7 @@ namespace App.Scripts.Features.Game.Bootstrap
             builder.RegisterSystem<MatchSystem>();
             InstallerInput.Configure(builder);
             InstallerMoving.Configure(builder);
+            builder.RegisterSystem<DestroyCardSystem>();
         }
     }
 }

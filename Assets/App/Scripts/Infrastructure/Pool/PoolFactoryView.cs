@@ -20,7 +20,6 @@ namespace App.Scripts.Infrastructure.Pool
             _factory = factory;
             _parent = parent;
             _pool = new ObjectPool<MonoView>(OnCreate, OnGet, OnRelease, OnDestroy);
-            Initialize();
         }
 
         private void OnRelease(MonoView obj)
@@ -50,7 +49,6 @@ namespace App.Scripts.Infrastructure.Pool
         {
             Object.Destroy(obj.gameObject);
         }
-        
 
         public async UniTask Initialize(int initialSize = 10)
         {

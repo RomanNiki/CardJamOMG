@@ -16,7 +16,7 @@ namespace App.Scripts.Features.Game.Moving.Systems
 
         public override void OnAwake()
         {
-            _filter = World.Filter.Extend<CollisionAspect>().With<TagThrownCard>().Build();
+            _filter = World.Filter.Extend<CollisionAspect>().Without<OnField>().Build();
             _filterFieldCard = World.Filter.Extend<CollisionAspect>().With<OnField>().Build();
             _aspectFactory = World.GetAspectFactory<CollisionAspect>();
         }
