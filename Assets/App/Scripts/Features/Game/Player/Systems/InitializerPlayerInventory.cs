@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using App.Scripts.Features.Game.Constants;
 using App.Scripts.Features.Game.Level.Components;
+using App.Scripts.Features.Game.Level.Events;
 using App.Scripts.Features.Game.Level.Models;
 using App.Scripts.Features.Game.Player.Components;
 using App.Scripts.Infrastructure.Extensions;
@@ -20,13 +21,13 @@ namespace App.Scripts.Features.Game.Player.Systems
 
             var model = modelLevelEntity.GetComponent<ModelLevel>();
 
-            Filter fieldCardFilter = World.Filter.With<Card>().With<OnField>().Build();
+            Filter fieldCardFilter = World.Filter.With<RequestSpawnCard>().Build();
             
             List<Card> inventoryCards = new List<Card>();
 
             foreach (var entity in fieldCardFilter)
             {
-                var fieldCard = entity.GetComponent<Card>();
+                var fieldCard = entity.GetComponent<RequestSpawnCard>();
                 
                 // Чтобы "закрыть" карту, нужно совпадение либо по типу (цвету), либо по номеру
                 if (Random.value > 0.5f)
@@ -34,7 +35,7 @@ namespace App.Scripts.Features.Game.Player.Systems
                     // Совпадение по типу
                     inventoryCards.Add(new Card
                     {
-                        type = fieldCard.type,
+                        type = fieldCard.card.type,
                         number = GameConstants.GetRandomValue()
                     });
                 }
@@ -44,7 +45,7 @@ namespace App.Scripts.Features.Game.Player.Systems
                     inventoryCards.Add(new Card
                     {
                         type = CardType.GetRandom(),
-                        number = fieldCard.number
+                        number = fieldCard.card.number
                     });
                 }
             }

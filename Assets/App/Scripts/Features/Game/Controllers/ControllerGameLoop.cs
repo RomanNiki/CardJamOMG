@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using App.Scripts.Features.Game.Level.Models;
+using App.Scripts.Features.Game.Level.Providers;
 using App.Scripts.Infrastructure.WorldExtesions.Containers;
 using Cysharp.Threading.Tasks;
 using Scellecs.Morpeh;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace App.Scripts.Features.Game.Controllers
@@ -13,34 +13,19 @@ namespace App.Scripts.Features.Game.Controllers
     public class ControllerGameLoop : IAsyncStartable, ITickable, IDisposable
     {
         private readonly IContainerWorld _container;
+        private readonly IProviderLevels _providerLevels;
 
-        public ControllerGameLoop(IContainerWorld container)
+        public ControllerGameLoop(IContainerWorld container, IProviderLevels providerLevels)
         {
             _container = container;
+            _providerLevels = providerLevels;
         }
 
         public void Initialize()
         {
             World world = World.Create();
-            world.CreateEntity().SetComponent(new ModelLevel()
-            {
-                listCardsPos = new List<ModelCard>()
-                {
-                    new ModelCard()
-                    {
-                        position = new Vector2Int(1, 1),
-                    },
-                    new ModelCard()
-                    {
-                        position = new Vector2Int(2, 2),
-                    },
-                    new ModelCard()
-                    {
-                        position = new Vector2Int(4, 4),
-                    }
-                },
-                countAdditional = 5
-            });
+            ModelLevel modelLevel = _providerLevels.GetLevels().First();
+            world.CreateEntity().SetComponent(modelLevel);
           
             _container.Initialize(world);
         }
