@@ -25,6 +25,7 @@ namespace App.Scripts.Features.Game.Cards.Systems
                 TransformableView transformableView = entity.GetComponent<TransformableView>();
                 transformableView.Dispose();
                 World.RemoveEntity(entity);
+                World.SendMassage(new EventDestroed());
             }
 
             _stash.RemoveAll();
