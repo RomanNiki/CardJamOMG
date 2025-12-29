@@ -1,7 +1,6 @@
-using System.Linq;
 using UnityEngine;
 
-namespace App.Scripts.Features.Game
+namespace App.Scripts.Features.Game.Constants
 {
     public static class CardType
     {

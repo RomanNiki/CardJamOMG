@@ -14,6 +14,7 @@ namespace App.Scripts.Features.Game.Bootstrap
         {
             builder.RegisterInitializer<InitializableLevel>();
             builder.RegisterInitializer<InitializerPlayerInventory>();
+            builder.RegisterSystem<SelectCurrentCardSystem>();
             InstallerInput.Configure(builder);
             InstallerMoving.Configure(builder);
         }
