@@ -17,7 +17,6 @@ namespace App.Scripts.Features.Game.Level.Systems
         {
             var filter = World.Filter.With<ModelLevel>().Build();
             var modelLevelEntity = filter.First();
-            if (modelLevelEntity == null) return;
 
             var model = modelLevelEntity.GetComponent<ModelLevel>();
 
@@ -42,7 +41,7 @@ namespace App.Scripts.Features.Game.Level.Systems
                     type = CardType.GetRandom(),
                     number = GameConstants.GetRandomValue()
                 },
-                position = rect.position,
+                position = rect.center,
                 velocity = cardData.moveDir,
                 size = rect.size,
                 isCurrentCard = false

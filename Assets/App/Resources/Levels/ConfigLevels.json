@@ -60,9 +60,9 @@
       "listCardsPos": [
         { "position": { "x": 3, "y": 3 }, "moveDir": { "x": 0.0, "y": 0.0 } },
         { "position": { "x": 3, "y": 1 }, "moveDir": { "x": 0.0, "y": 1.0 } },
-        { "position": { "x": 3, "y": 5 }, "moveDir": { "x": 0.0, "y": -1.0 } },
+        { "position": { "x": 3, "y": 4 }, "moveDir": { "x": 0.0, "y": -1.0 } },
         { "position": { "x": 1, "y": 3 }, "moveDir": { "x": 1.0, "y": 0.0 } },
-        { "position": { "x": 5, "y": 3 }, "moveDir": { "x": -1.0, "y": 0.0 } }
+        { "position": { "x": 4, "y": 3 }, "moveDir": { "x": -1.0, "y": 0.0 } }
       ],
       "countAdditional": 0
     },

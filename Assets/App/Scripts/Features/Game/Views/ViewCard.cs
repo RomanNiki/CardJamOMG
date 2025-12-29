@@ -40,5 +40,15 @@ namespace App.Scripts.Features.Game.Views
                 cardBackground.color = color;
             }
         }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

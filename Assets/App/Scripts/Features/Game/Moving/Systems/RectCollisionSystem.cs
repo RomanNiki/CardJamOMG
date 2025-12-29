@@ -1,5 +1,6 @@
 using App.Scripts.Features.Game.Level.Components;
 using App.Scripts.Features.Game.Moving.Aspects;
+using App.Scripts.Features.Game.Moving.Components;
 using App.Scripts.Features.Game.Moving.Events;
 using App.Scripts.Features.Game.Player.Components;
 using App.Scripts.Infrastructure.WorldExtesions.Systems;
@@ -28,19 +29,17 @@ namespace App.Scripts.Features.Game.Moving.Systems
                 foreach (var entityB in _filterFieldCard)
                 {
                     if (entityA == entityB) continue;
-                    
-                    var aspectA = _aspectFactory.Get(entityA);
-                    var aspectB = _aspectFactory.Get(entityB);
 
-                    var posA = aspectA.Position.Value;
-                    var posB = aspectB.Position.Value;
-                    var sizeA = aspectA.Collider.Size;
-                    var sizeB = aspectB.Collider.Size;
+                    CollisionAspect aspectA = _aspectFactory.Get(entityA);
+                    CollisionAspect aspectB = _aspectFactory.Get(entityB);
+                    Vector2 aspectAPosition = aspectA.Position.Value;
+                    Vector2 colliderSize = aspectA.Collider.Size;
+                    Rect rectA = new Rect(aspectAPosition.x, aspectAPosition.y, colliderSize.x, colliderSize.y);
+                    Vector2 aspectBPosition = aspectB.Position.Value;
+                    Vector2 colliderSizeB = aspectB.Collider.Size;
+                    Rect rectB = new Rect(aspectBPosition.x, aspectBPosition.y,  colliderSizeB.x, colliderSizeB.y);
 
-                    var rectA = new Rect(posA - sizeA * 0.5f, sizeA);
-                    var rectB = new Rect(posB - sizeB * 0.5f, sizeB);
-
-                    if (rectA.Overlaps(rectB))
+                    if (rectA.Overlaps(rectB, true))
                     {
                         ResolveCollision(ref aspectA, ref aspectB);
                     }
@@ -50,6 +49,7 @@ namespace App.Scripts.Features.Game.Moving.Systems
 
         private void ResolveCollision(ref CollisionAspect a, ref CollisionAspect b)
         {
+            Debug.Log("Collided " + a.Entity + " " + b.Entity);
             World.SendMassage(new EventCollided(a.Entity, b.Entity));
         }
     }

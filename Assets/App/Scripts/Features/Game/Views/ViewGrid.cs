@@ -8,10 +8,11 @@ namespace App.Scripts.Features.Game.Views
         public Vector2Int size;
         public RectTransform rectTransform;
         public RectTransform root;
+        public ViewCard next;
 
         public Rect GetCellRect(Vector2Int pos)
         {
-            if (pos.x < 0 || pos.y < 0 || pos.x >= size.x || pos.y >= size.y)
+            if (pos.x < 0 || pos.y < 0 || pos.x > size.x || pos.y > size.y)
                 return Rect.zero;
 
             Rect rootRect = rectTransform.GetWorldRect();

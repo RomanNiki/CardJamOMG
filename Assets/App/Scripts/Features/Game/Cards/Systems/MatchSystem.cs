@@ -57,12 +57,6 @@ namespace App.Scripts.Features.Game.Cards.Systems
 
         private void HandleMatch(Entity thrown, Entity field)
         {
-            if (!_cardStash.Has(thrown) || !_cardStash.Has(field))
-            {
-                World.SendMassage(new RequestRemoveCard(thrown));
-                return;
-            }
-
             var thrownCard = _cardStash.Get(thrown);
             var fieldCard = _cardStash.Get(field);
 
