@@ -22,6 +22,10 @@ namespace App.Scripts.Features.Game.Cards.Systems
             {
                 RequestRemoveCard requestRemoveCard = entityRemoveCard.GetComponent<RequestRemoveCard>();
                 Entity entity = requestRemoveCard.card;
+                if (entity.IsNullOrDisposed())
+                {
+                    continue;
+                }
                 TransformableView transformableView = entity.GetComponent<TransformableView>();
                 transformableView.Dispose();
                 World.RemoveEntity(entity);

@@ -16,9 +16,13 @@ MonoBehaviour:
   sprites:
   - type: red
     sprite: {fileID: 21300000, guid: fbf09a35791834f3590805f5f5e4c9c9, type: 3}
+    color: {r: 1, g: 0.25882354, b: 0.33333334, a: 1}
   - type: green
     sprite: {fileID: 21300000, guid: 0160c4103771e44ed89875cb0004742e, type: 3}
+    color: {r: 0.2784314, g: 0.6627451, b: 0.15294118, a: 1}
   - type: yellow
     sprite: {fileID: 21300000, guid: 68605bff6887f48d8b1424373d46cabb, type: 3}
+    color: {r: 1, g: 0.69803923, b: 0.02745098, a: 1}
   - type: blue
     sprite: {fileID: 21300000, guid: 5063582f018fe4d62a99330f0bc85863, type: 3}
+    color: {r: 0.14901961, g: 0.62352943, b: 0.8039216, a: 1}

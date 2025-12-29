@@ -1,4 +1,5 @@
 using App.Scripts.Infrastructure.BaseView;
+using App.Scripts.Infrastructure.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,11 @@ namespace App.Scripts.Features.Game.Views
         public Image[] cardBackgrounds;
         public TMP_Text[] texts;
         public Graphic[] Graphic;
+
+        public Rect GetRect()
+        {
+            return cardBackgrounds[0].rectTransform.GetWorldRect();
+        }
 
         public void SetNumber(int number)
         {

@@ -24,7 +24,7 @@ namespace App.Scripts.Features.Game.Controllers
         public void Initialize()
         {
             World world = World.Create();
-            ModelLevel modelLevel = _providerLevels.GetLevels().First();
+            ModelLevel modelLevel = _providerLevels.GetLevels().First(x => x.levelNumber == 7);
             world.CreateEntity().SetComponent(modelLevel);
           
             _container.Initialize(world);
