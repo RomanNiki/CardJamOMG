@@ -15,6 +15,8 @@ namespace App.Scripts.Features.Game.Moving.Bootstrap
             builder.RegisterSystem<GravitySystem>();
             builder.RegisterSystem<ForceSystem>();
             builder.RegisterSystem<VelocitySystem>();
+            builder.RegisterSystem<RectCollisionSystem>();
+            builder.RegisterSystem<BoundsCollisionSystem>();
             builder.RegisterSystem<ExecuteTransformSystem>();
             builder.RegisterSystem<OneShotSystem<ForceRequest>>();
         }

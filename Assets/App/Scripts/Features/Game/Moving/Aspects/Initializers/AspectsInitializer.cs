@@ -27,5 +27,15 @@ namespace App.Scripts.Features.Game.Moving.Aspects.Initializers
         {
             entity.SetComponent(new Inertia() { Friction = friction });
         }
+
+        public static void SetCollisionComponents(this Entity entity, Vector2 size)
+        {
+            entity.SetComponent(new RectCollider() { Size = size });
+        }
+
+        public static void SetBoundsComponents(this Entity entity, Rect bounds)
+        {
+            entity.SetComponent(new BoundsCollider() { Bounds = bounds });
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace App.Scripts.Features.Game.Moving.Systems
 
         public override void OnAwake()
         {
-            _velocityFilter = World.Filter.With<Velocity>().Build();
+            _velocityFilter = World.Filter.With<Velocity>().Without<TagIgnoreGravity>().Build();
         }
 
         public override void OnUpdate(float dt)
