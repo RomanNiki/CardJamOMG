@@ -1,11 +1,12 @@
 using System;
+using UnityEngine;
 
 namespace App.Scripts.Features.Game.Level.Models
 {
     [Serializable]
     public struct ModelCard
     {
-        public string type;
-        public int value;
+        public Vector2Int position;
+        public Vector2 moveDir;
     }
 }

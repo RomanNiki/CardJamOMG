@@ -1,4 +1,5 @@
-﻿using App.Scripts.Features.Game.Moving.Components;
+﻿using App.Scripts.Features.Game.Input.Components;
+using App.Scripts.Features.Game.Moving.Components;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ namespace App.Scripts.Features.Game.Moving.Aspects.Initializers
             entity.SetComponent(new Velocity() { Value = velocity });
             entity.SetComponent(new AngularVelocity() { Value = angularVelocity });
             entity.SetComponent(new ScaleVelocity() { Value = scaleVelocity });
+        }
+
+        public static void SetInertiaComponent(this Entity entity, float friction = 1f)
+        {
+            entity.SetComponent(new Inertia() { Friction = friction });
         }
     }
 }
